@@ -471,15 +471,12 @@ table {
         background: url('../img/header-bg2.png') center no-repeat;
         background-size: cover;
     }
+
     60% {
-        background: url('../img/header-bg3.png') center no-repeat;
-        background-size: cover;
-    }
-    80% {
         background: url('../img/header-bg4.png') center no-repeat;
         background-size: cover;
     }
-    100% {
+    80% {
         background: url('../img/header-bg.png') center no-repeat;
         background-size: cover;
     }

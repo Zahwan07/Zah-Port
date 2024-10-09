@@ -39,14 +39,14 @@ a:hover,a:focus,a:active {
 	outline:none!important;
 }
 p {
-	color:#8c9398;
+	color:#ffffff;
 	word-spacing:1px;
 	line-height:25px;
 	font-size:14px;
 }
 h2 {
 	font-size:15px;
-	color:#000000!important;
+	color:#ffffff!important;
 	text-transform:uppercase;
 	font-weight:bold;
 }
@@ -123,7 +123,7 @@ h1 {
 h2 {
 	font-size:1.5em;
 	margin:0.83em 0;
-	color:#000000;
+	color:#ffffff;
 
 }
 h3 {
@@ -198,7 +198,7 @@ p {
 	font-size: 14px;
 	font-weight:100;
 	line-height: 28px!important;
-	color:#000000;
+	color:#ffffff;
 
 }
 /* ==========================================================================Lists========================================================================== */
@@ -859,6 +859,20 @@ img.grayscale:hover {
 	margin-right:auto;
 	top: 50px;
 }
+/* ==========================================================================Blog========================================================================== */
+/* Default text color for links in the blog section */
+.blog-text a {
+	text-decoration: none; /* Removes underline */
+	font-size:1.5em;
+	margin:0.83em 0;
+	color:#ffffff;
+  }
+  
+  /* Change text color on hover in the blog section */
+  .blog-text a:hover {
+	color: purple; /* Change text color to purple when hovered */
+  }
+  
 /* ==========================================================================Subscribe========================================================================== */
 .subscribe {
 	padding-top:75px;
@@ -1057,6 +1071,8 @@ ul.social-buttons li:last-child {
 button,button:focus,button:hover,button:active {
 	outline: none!important;
 }
+
+
 /* ==========================================================================Footer========================================================================== */
 footer a {
 	color:#a1a9b0;

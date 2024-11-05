@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teka-Teki Silang</title>
+    <link rel="stylesheet" href="css/styleUTS.css">
+</head>
+<body>
+    <h1>Game Teka-Teki Silang</h1>
+    <div class="game-container">
+        <div class="grid">
+            <!-- Kotak-kotak TTS dengan beberapa petunjuk huruf -->
+            <div class="cell" data-answer="A" data-question="1 Mendatar"><input maxlength="1" value="A"></div>
+            <div class="cell" data-answer="G"><input maxlength="1"></div>
+            <div class="cell" data-answer="U"><input maxlength="1"></div>
+            <div class="cell" data-answer="S"><input maxlength="1"></div>
+            <div class="cell" data-answer="T"><input maxlength="1"></div>
+            <div class="cell" data-answer="U"><input maxlength="1"></div>
+            <div class="cell" data-answer="S"><input maxlength="1"></div>
+
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="C" data-question="1 Menurun"><input maxlength="1" value="C"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="D" data-question="2 Mendatar"><input maxlength="1"></div>
+            <div class="cell" data-answer="U"><input maxlength="1"></div>
+            <div class="cell" data-answer="B"><input maxlength="1" value="B"></div>
+            <div class="cell" data-answer="L"><input maxlength="1"></div>
+            <div class="cell" data-answer="I"><input maxlength="1"></div>
+            <div class="cell" data-answer="N"><input maxlength="1"></div>
+
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="H" data-question="3 Mendatar"><input maxlength="1"></div>
+            <div class="cell" data-answer="P"><input maxlength="1"></div>
+            <div class="cell" data-answer="L"><input maxlength="1" value="L"></div>
+            <div class="cell" data-answer="A"><input maxlength="1"></div>
+            <div class="cell" data-answer="S"><input maxlength="1"></div>
+            <div class="cell" data-answer="M"><input maxlength="1"></div>
+            <div class="cell" data-answer="A"><input maxlength="1"></div>
+
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="I" data-question="4 Mendatar"><input maxlength="1"></div>
+            <div class="cell" data-answer="C" data-question="2 Menurun"><input maxlength="1" value="C"></div>
+            <div class="cell" data-answer="R"><input maxlength="1"></div>
+            <div class="cell" data-answer="E"><input maxlength="1"></div>
+            <div class="cell" data-answer="E"><input maxlength="1"></div>
+            <div class="cell" data-answer="P"><input maxlength="1"></div>
+            <div class="cell" data-answer="E"><input maxlength="1"></div>
+            <div class="cell" data-answer="R"><input maxlength="1"></div>
+
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="T" data-question="5 Mendatar"><input maxlength="1" value="T"></div>
+            <div class="cell" data-answer="S" data-question="4 Menurun"><input maxlength="1"></div>
+            <div class="cell" data-answer="W"><input maxlength="1"></div>
+            <div class="cell" data-answer="I"><input maxlength="1"></div>
+            <div class="cell" data-answer="F"><input maxlength="1"></div>
+            <div class="cell" data-answer="T"><input maxlength="1"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="N" data-question="5 Menurun"><input maxlength="1"></div>
+            <div class="cell" data-answer="C" data-question="5 Menurun"><input maxlength="1"></div>
+        </div>
+        <div class="questions">
+            <h3>Pertanyaan:</h3>
+            <p><strong>Mendatar:</strong></p>
+            <ul>
+                <li>1. Bulan Kemerdekaan Indonesia (7 huruf)</li>
+                <li>2. Kota kapital negara Irlandia (6 huruf)</li>
+                <li>3. Bentuk Zat yang ke-4 (6 huruf)</li>
+                <li>4. Virus Komputer Pertama? (7 huruf)</li>
+                <li>5. Bahasa pemrograman yang dipakai IOS? (5 huruf)</li>
+            </ul>
+            <p><strong>Menurun:</strong></p>
+            <ul>
+                <li>1. Negara Asal mulanya Es Krim (5 huruf)</li>
+                <li>2. Pemenang FIFA World Cup 2022 (8 huruf)</li>
+                <li>3. Planet dengan 146 bulan (7 huruf)</li>
+                <li>4. Internal Codename untuk Android 13 (8 huruf)</li>
+                <li>5. Unit Data Storage yang mempunyai 1,000,000,000,000,000 byte (8 huruf)</li>
+            </ul>
+        </div>
+        <div class="score-board">
+            <p>Skor: <span id="score">0</span></p>
+            <button onclick="checkAnswers()">Periksa Jawaban</button>
+            <a href="index.html" class="back-button">Go Back to Home</a>
+
+        </div>
+    </div>
+    <script src="js/scriptUTS.js"></script>
+</body>
+</html>

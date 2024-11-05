@@ -1,6 +1,6 @@
 let score = 0;
 
-// Fungsi untuk memeriksa jawaban dan memberikan skor
+
 function checkAnswers() {
     let correctAnswers = 0;
     document.querySelectorAll('.cell[data-answer]').forEach(cell => {
@@ -8,11 +8,10 @@ function checkAnswers() {
         const userAnswer = cell.querySelector('input').value.toUpperCase();
         
         if (userAnswer === answer) {
-            cell.querySelector('input').style.backgroundColor = '#90EE90'; // Hijau untuk jawaban benar
+            cell.querySelector('input').style.backgroundColor = '#90EE90'; 
             correctAnswers++;
         } else {
-            cell.querySelector('input').style.backgroundColor = '#F08080'; // Merah untuk jawaban salah
-        }
+            cell.querySelector('input').style.backgroundColor = '#F08080'; }
     });
 
     score = correctAnswers;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input Data</title>
+</head>
+<body>
+    <h1>Form Input Data Mahasiswa</h1>
+    <form action="file.php" method="POST">
+        <label for="nim">NIM:</label><br>
+        <input type="text" id="nim" name="nim" required><br><br>
+
+        <label for="nama">Nama:</label><br>
+        <input type="text" id="nama" name="nama" required><br><br>
+
+        <label for="jenis_kelamin">Jenis Kelamin:</label><br>
+        <input type="radio" id="pria" name="jenis_kelamin" value="Pria" required> Pria
+        <input type="radio" id="wanita" name="jenis_kelamin" value="Wanita" required> Wanita<br><br>
+
+        <label for="alamat">Alamat:</label><br>
+        <textarea id="alamat" name="alamat" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="no_hp">No HP:</label><br>
+        <input type="text" id="no_hp" name="no_hp" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <br>
+    <a href="data_mahasiswa.csv" download>Download File CSV</a>
+</body>
+</html>

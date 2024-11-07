@@ -3,87 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teka-Teki Silang</title>
+    <title>Game Teka-Teki Silang</title>
     <link rel="stylesheet" href="css/styleUTS.css">
 </head>
 <body>
     <h1>Game Teka-Teki Silang</h1>
     <div class="game-container">
         <div class="grid">
-            <div class="cell" data-answer="A" data-question="1 Mendatar"><input maxlength="1" value="A"></div>
-            <div class="cell" data-answer="G"><input maxlength="1"></div>
-            <div class="cell" data-answer="U"><input maxlength="1"></div>
-            <div class="cell" data-answer="S"><input maxlength="1"></div>
-            <div class="cell" data-answer="T"><input maxlength="1"></div>
-            <div class="cell" data-answer="U"><input maxlength="1"></div>
-            <div class="cell" data-answer="S"><input maxlength="1"></div>
+            <!-- Mengisi kotak dengan input dan jawaban yang benar sebagai data-attribute -->
+            <!-- Contoh: <div class="cell"><input data-answer="A"></div> -->
+            
+            <!-- Baris 1 -->
+            <div class="cell"><input data-answer="A"></div>
+            <div class="cell"><input data-answer="G"></div>
+            <div class="cell"><input data-answer="U"></div>
+            <div class="cell"><input data-answer="S"></div>
+            <div class="cell"><input data-answer="T"></div>
+            <div class="cell"><input data-answer="U"></div>
+            <div class="cell"><input data-answer="S"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
 
+            <!-- Lanjutkan mengisi baris sesuai gambar -->
+            <!-- Baris 2 -->
+            <div class="cell"><input data-answer="R"></div>
             <div class="cell black-cell"></div>
-            <div class="cell" data-answer="C" data-question="1 Menurun"><input maxlength="1" value="C"></div>
             <div class="cell black-cell"></div>
-            <div class="cell" data-answer="D" data-question="2 Mendatar"><input maxlength="1"></div>
-            <div class="cell" data-answer="U"><input maxlength="1"></div>
-            <div class="cell" data-answer="B"><input maxlength="1" value="B"></div>
-            <div class="cell" data-answer="L"><input maxlength="1"></div>
-            <div class="cell" data-answer="I"><input maxlength="1"></div>
-            <div class="cell" data-answer="N"><input maxlength="1"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell"><input data-answer="T"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell"><input data-answer="T"></div>
+            <div class="cell black-cell"></div>
 
+            <!-- Baris 3 -->
+            <div class="cell" data-answer="G"></div>
             <div class="cell black-cell"></div>
-            <div class="cell" data-answer="H" data-question="3 Mendatar"><input maxlength="1"></div>
-            <div class="cell" data-answer="P"><input maxlength="1"></div>
-            <div class="cell" data-answer="L"><input maxlength="1" value="L"></div>
-            <div class="cell" data-answer="A"><input maxlength="1"></div>
-            <div class="cell" data-answer="S"><input maxlength="1"></div>
-            <div class="cell" data-answer="M"><input maxlength="1"></div>
-            <div class="cell" data-answer="A"><input maxlength="1"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="T"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell" data-answer="T"></div>
+            <div class="cell black-cell"></div>
 
+            <!-- Baris 4 -->
+            <div class="cell" data-answer="E"></div>
+            <div class="cell" data-answer="B"></div>
             <div class="cell black-cell"></div>
-            <div class="cell" data-answer="I" data-question="4 Mendatar"><input maxlength="1"></div>
-            <div class="cell" data-answer="C" data-question="2 Menurun"><input maxlength="1" value="C"></div>
-            <div class="cell" data-answer="R"><input maxlength="1"></div>
-            <div class="cell" data-answer="E"><input maxlength="1"></div>
-            <div class="cell" data-answer="E"><input maxlength="1"></div>
-            <div class="cell" data-answer="P"><input maxlength="1"></div>
-            <div class="cell" data-answer="E"><input maxlength="1"></div>
-            <div class="cell" data-answer="R"><input maxlength="1"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
 
+            <!-- Baris 5 -->
+            <div class="cell" data-answer="N"></div>
             <div class="cell black-cell"></div>
-            <div class="cell" data-answer="T" data-question="5 Mendatar"><input maxlength="1" value="T"></div>
-            <div class="cell" data-answer="S" data-question="4 Menurun"><input maxlength="1"></div>
-            <div class="cell" data-answer="W"><input maxlength="1"></div>
-            <div class="cell" data-answer="I"><input maxlength="1"></div>
-            <div class="cell" data-answer="F"><input maxlength="1"></div>
-            <div class="cell" data-answer="T"><input maxlength="1"></div>
             <div class="cell black-cell"></div>
-            <div class="cell" data-answer="N" data-question="5 Menurun"><input maxlength="1"></div>
-            <div class="cell" data-answer="C" data-question="5 Menurun"><input maxlength="1"></div>
-        </div>
-        <div class="questions">
-            <h3>Pertanyaan:</h3>
-            <p><strong>Mendatar:</strong></p>
-            <ul>
-                <li>1. Bulan Kemerdekaan Indonesia (7 huruf)</li>
-                <li>2. Kota kapital negara Irlandia (6 huruf)</li>
-                <li>3. Bentuk Zat yang ke-4 (6 huruf)</li>
-                <li>4. Virus Komputer Pertama? (7 huruf)</li>
-                <li>5. Bahasa pemrograman yang dipakai IOS? (5 huruf)</li>
-            </ul>
-            <p><strong>Menurun:</strong></p>
-            <ul>
-                <li>1. Negara Asal mulanya Es Krim (5 huruf)</li>
-                <li>2. Pemenang FIFA World Cup 2022 (8 huruf)</li>
-                <li>3. Planet dengan 146 bulan (7 huruf)</li>
-                <li>4. Internal Codename untuk Android 13 (8 huruf)</li>
-                <li>5. Unit Data Storage yang mempunyai 1,000,000,000,000,000 byte (8 huruf)</li>
-            </ul>
-        </div>
-        <div class="score-board">
-            <p>Skor: <span id="score">0</span></p>
-            <button onclick="checkAnswers()">Periksa Jawaban</button>
-            <a href="index.html" class="back-button">Go Back to Home</a>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <div class="cell black-cell"></div>
+            <!-- Baris 6 -->
+            <div class="cell" data-answer="T"></div>
+<div class="cell" data-answer="D"></div>
+<div class="cell" data-answer="U"></div>
+<div class="cell" data-answer="B"></div>
+<div class="cell" data-answer="L"></div>
+<div class="cell" data-answer="I"></div>
+<div class="cell" data-answer="N"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
 
-        </div>
+<!-- Baris 7 -->
+<div class="cell" data-answer="I"></div>
+<div class="cell" data-answer="C"></div>
+<div class="cell" data-answer="R"></div>
+<div class="cell" data-answer="E"></div>
+<div class="cell" data-answer="E"></div>
+<div class="cell" data-answer="P"></div>
+<div class="cell" data-answer="E"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+
+<!-- Baris 8 -->
+<div class="cell" data-answer="N"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="T"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="I"></div>
+<div class="cell" data-answer="O"></div>
+
+<!-- Baris 9 -->
+<div class="cell" data-answer="A"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="S"></div>
+<div class="cell" data-answer="S"></div>
+
+<!-- Baris 10 -->
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="N"></div>
+<div class="cell" data-answer="U"></div>
+<div class="cell" data-answer="S"></div>
+<div class="cell" data-answer="A"></div>
+<div class="cell" data-answer="P"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="T"></div>
+
+<!-- Baris 11 -->
+<div class="cell" data-answer="T"></div>
+<div class="cell" data-answer="P"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="A"></div>
+<div class="cell" data-answer="G"></div>
+<div class="cell" data-answer="I"></div>
+<div class="cell" data-answer="N"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="S"></div>
+
+<!-- Baris 12 -->
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="B"></div>
+<div class="cell" data-answer="N"></div>
+<div class="cell black-cell"></div>
+
+
+<!-- Baris 13 -->
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="S"></div>
+<div class="cell" data-answer="W"></div>
+<div class="cell" data-answer="I"></div>
+<div class="cell" data-answer="F"></div>
+<div class="cell" data-answer="T"></div>
+
+<!-- Baris 14 -->
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="C"></div>
+<div class="cell" data-answer="R"></div>
+<div class="cell" data-answer="E"></div>
+<div class="cell" data-answer="A"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="I"></div>
+<div class="cell" data-answer="N"></div>
+
+<!-- Baris 15 -->
+<div class="cell" data-answer="L"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="B"></div>
+<div class="cell" data-answer="E"></div>
+<div class="cell" data-answer="T"></div>
+<div class="cell" data-answer="A"></div>
+<div class="cell" data-answer="C"></div>
+<div class="cell" data-answer="H"></div>
+<div class="cell black-cell"></div>
+
+<!-- Baris 16 -->
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+<div class="cell" data-answer="I"></div>
+<div class="cell" data-answer="N"></div>
+<div class="cell" data-answer="T"></div>
+<div class="cell" data-answer="E"></div>
+<div class="cell" data-answer="R"></div>
+<div class="cell black-cell"></div>
+<div class="cell black-cell"></div>
+
+</div>
+<div class="questions">
+    <h2>Pertanyaan:</h2>
+    <h3>Mendatar:</h3>
+    <ul>
+        <li id="q-horizontal-1">1. Bulan Kemerdekaan Indonesia (7 huruf)</li>
+        <li id="q-horizontal-2">2. Kota kapital negara Irlandia (6 huruf)</li>
+        <li id="q-horizontal-3">3. Bentuk Zat yang ke-4 (6 huruf)</li>
+        <li id="q-horizontal-4">4. Virus Komputer Pertama? (7 huruf)</li>
+        <li id="q-horizontal-5">5. Bahasa pemrograman yang dipakai IOS? (5 huruf)</li>
+    </ul>
+    <h3>Menurun:</h3>
+    <ul>
+        <li id="q-vertical-1">1. Negara Asal mulanya Es Krim (5 huruf)</li>
+        <li id="q-vertical-2">2. Pemenang FIFA World Cup 2022 (8 huruf)</li>
+        <li id="q-vertical-3">3. Planet dengan 146 bulan (7 huruf)</li>
+        <li id="q-vertical-4">4. Internal Codename untuk Android 13 (8 huruf)</li>
+        <li id="q-vertical-5">5. Unit Data Storage yang mempunyai 1,000,000,000,000,000 byte (8 huruf)</li>
+    </ul>
+</div>
+
+    <div class="score-board">
+        <p>Skor: <span id="score">0</span></p>
+        <button onclick="checkAnswers()">Periksa Jawaban</button>
     </div>
-    <script src="js/scriptUTS.js"></script>
+</div>
+</div>
+<script src="js/scriptUTS.js"></script>
 </body>
 </html>

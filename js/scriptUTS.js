@@ -1,92 +1,58 @@
-function checkAnswers() {
-    const cells = document.querySelectorAll('.cell input'); // Mengambil semua input dalam grid
-    let score = 0; // Inisialisasi skor
+  var answers = {
+    "AGUSTUS": [11, 12, 13, 14, 15, 16, 17],
+    "ARGENTINA": [18, 19, 20, 21, 22, 23, 24, 25],
+    "TIRAMISU": [27, 28, 29, 30, 31, 32, 33],
+    "SATURNUS": [34, 35, 36, 37, 38, 39, 40],
+    "DUBLIN": [41, 42, 43, 44, 45],
+    "CHINA": [46, 47, 48, 49],
+    "SWIFT": [50, 51, 52, 53],
+    "PLASMA": [54, 55, 56, 57, 58, 59],
+    "PETABYTE": [61, 62, 63, 64, 65, 66, 67]
+  };
+  
+  var inputs = document.querySelectorAll("input.inpt");
+  
+  // Fungsi untuk mengecek setiap jawaban
+  function checkEachAnswer() {
+    var allCorrect = true;
+  
+    for (var key in answers) {
+      let ids = answers[key];
+      var currentValues = ids
+        .map((id) => document.getElementById(id).value.toUpperCase())
+        .join("");
+  
+      if (currentValues === key) {
+        ids.forEach((id) => {
+          document.getElementById(id).style.color = "green";
+        });
+      } else {
+        allCorrect = false;
+        ids.forEach((id) => {
+          document.getElementById(id).style.color = "red";
+        });
+      }
+    }
+  
+    return allCorrect;
+  }
 
-    // Loop melalui setiap sel input
-    cells.forEach(cell => {
-        const answer = cell.dataset.answer; // Ambil jawaban yang benar dari data-attribute
-        const userAnswer = cell.value.toUpperCase(); // Ambil jawaban pengguna dan ubah ke huruf besar
-        
-        if (userAnswer === answer) {
-            cell.classList.add('correct');
-            cell.classList.remove('incorrect');
-            score++; // Tambah skor jika benar
-        } else {
-            cell.classList.add('incorrect');
-            cell.classList.remove('correct');
-        }
-    });
-
-    // Update skor di elemen #score
-    document.getElementById('score').textContent = score;
-
-    // Update warna pada pertanyaan berdasarkan jawaban pengguna
-    updateQuestionsColor();
+  
+  console.log("Tombol Cek Jawaban Ditekan"); // Debug
+var allCorrect = checkEachAnswer();
+console.log("Status Semua Benar:", allCorrect); // Debug
+if (allCorrect) {
+  alert("Selamat! Semua jawaban Anda benar!");
+} else {
+  alert("Masih ada jawaban yang salah. Silakan periksa kembali.");
 }
 
-function updateQuestionsColor() {
-    const horizontalAnswers = {
-        1: "AGUSTUS",
-        2: "DUBLIN",
-        3: "PLASMA",
-        4: "CREEPER",
-        5: "SWIFT"
-    };
-
-    const verticalAnswers = {
-        1: "ITALI",
-        2: "ARGENTINA",
-        3: "SATURNUS",
-        4: "TIRAMISU",
-        5: "PETABYTE"
-    };
-
-    // Periksa jawaban mendatar
-    for (const [num, answer] of Object.entries(horizontalAnswers)) {
-        const questionEl = document.getElementById(`q-horizontal-${num}`);
-        const userAnswer = getAnswerFromGrid('horizontal', num);
-        
-        if (userAnswer === answer) {
-            questionEl.classList.add('correct');
-            questionEl.classList.remove('incorrect');
-        } else {
-            questionEl.classList.add('incorrect');
-            questionEl.classList.remove('correct');
-        }
+  // Event listener untuk tombol cek jawaban
+  document.getElementById("checkAnswers").addEventListener("click", function () {
+    var allCorrect = checkEachAnswer();
+    if (allCorrect) {
+      alert("Selamat! Semua jawaban Anda benar!");
+    } else {
+      alert("Masih ada jawaban yang salah. Silakan periksa kembali.");
     }
-
-    // Periksa jawaban menurun
-    for (const [num, answer] of Object.entries(verticalAnswers)) {
-        const questionEl = document.getElementById(`q-vertical-${num}`);
-        const userAnswer = getAnswerFromGrid('vertical', num);
-        
-        if (userAnswer === answer) {
-            questionEl.classList.add('correct');
-            questionEl.classList.remove('incorrect');
-        } else {
-            questionEl.classList.add('incorrect');
-            questionEl.classList.remove('correct');
-        }
-    }
-}
-
-// Fungsi untuk mengambil jawaban pengguna dari grid berdasarkan arah dan nomor pertanyaan
-function getAnswerFromGrid(direction, number) {
-    const answerCells = [];
-    // Pilih sel-sel yang sesuai dengan arah dan nomor pertanyaan
-    switch (direction) {
-        case 'horizontal':
-            // Tambahkan logika sesuai posisi mendatar
-            // Contoh: jika nomor 1 mendatar dimulai dari sel pertama pada baris pertama
-            // PENTING: Sesuaikan dengan struktur grid
-            if (number === 1) answerCells.push(...document.querySelectorAll('.grid .cell:nth-child(n+1):nth-child(-n+7) input'));
-            break;
-        case 'vertical':
-            // Tambahkan logika sesuai posisi menurun
-            // Contoh: jika nomor 1 menurun dimulai dari sel pertama pada kolom pertama
-            // PENTING: Sesuaikan dengan struktur grid
-            if (number === 1) answerCells.push(...document.querySelectorAll('.grid .cell:nth-child(1n+0):nth-child(-n+5) input'));
-            break;
-    }
-    return answerCells.map(cell => cell.value.toUpperCase()).join('');
-}
+  });

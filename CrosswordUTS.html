@@ -1,222 +1,558 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Teka-Teki Silang</title>
-    <link rel="stylesheet" href="css/styleUTS.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTS CROSSWORD ZULFAN AL-ZAHWAN PUTRA ASHADI</title>
+  <style>
+    /* CSS yang Anda berikan */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f7f8;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .game-layout {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .crossword-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    #crossword {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      gap: 4px;
+      margin: 10px 0;
+    }
+
+    .cell {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.1s ease;
+    }
+
+    .cell:hover {
+      transform: scale(1.05);
+    }
+
+    .cell.black {
+      background-color: #333;
+      border: none;
+      box-shadow: none;
+    }
+
+    input.cell-input {
+      width: 100%;
+      height: 100%;
+      font-size: 18px;
+      text-align: center;
+      border: none;
+      background-color: transparent;
+      color: #333;
+    }
+
+    input.cell-input:focus {
+      outline: none;
+      background-color: #e0f7fa;
+    }
+
+    #questions {
+      text-align: left;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #submit {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #0288d1;
+      color: white;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    #submit:hover {
+      background-color: #0277bd;
+    }
+
+    #score {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .cell-number {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      font-size: 10px;
+      font-weight: normal;
+      color: #666;
+      pointer-events: none;
+    }
+    #back {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  }
+  #back:hover {
+      background-color: #0056b3;
+  }
+
+    @media (max-width: 768px) {
+      .container {
+        max-width: 600px;
+        padding: 10px;
+      }
+
+      #crossword {
+        grid-template-columns: repeat(16, 1fr);
+        gap: 3px;
+      }
+
+      .cell {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+
+      #submit {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      #score {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        max-width: 100%;
+        padding: 10px;
+      }
+
+      .game-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #crossword {
+        grid-template-columns: repeat(16, 1fr);
+        gap: 2px;
+      }
+
+      .cell {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      #submit {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-top: 20px;
+      }
+
+      #score {
+        font-size: 14px;
+      }
+
+      #questions {
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Game Teka-Teki Silang</h1>
-    <div class="game-container">
-        <div class="grid">
-            <!-- Mengisi kotak dengan input dan jawaban yang benar sebagai data-attribute -->
-            <!-- Contoh: <div class="cell"><input data-answer="A"></div> -->
-            
-            <!-- Baris 1 -->
-            <div class="cell"><input data-answer="A"></div>
-            <div class="cell"><input data-answer="G"></div>
-            <div class="cell"><input data-answer="U"></div>
-            <div class="cell"><input data-answer="S"></div>
-            <div class="cell"><input data-answer="T"></div>
-            <div class="cell"><input data-answer="U"></div>
-            <div class="cell"><input data-answer="S"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
+  <div class="container">
+    <div class="game-layout">
+      <div class="crossword-section">
+        <div id="crossword">
+          <div class="cell" id="10"><span class="cell-label">1.</span><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="11"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="12"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="13"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="14"><span class="cell-label">4.</span><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="15"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="16"><span class="cell-label">5.</span><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+        
+          <div class="cell" id="18"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="27"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="34"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="46"><span class="cell-label">2.</span><input class="cell-input" maxlength="1"></div>
+        
+          <div class="cell" id="19"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="28"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="35"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="47"><input class="cell-input" maxlength="1"></div>
+        
+          <div class="cell" id="20"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="29"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="41"><span class="cell-label">2.</span><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="36"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="42"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="43"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="44"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="45"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="48"><input class="cell-input" maxlength="1"></div>
+        
+          <div class="cell" id="21"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="30"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="37"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="49"><input class="cell-input" maxlength="1"></div>
+        
+          <div class="cell" id="22"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="31"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="38"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="54"><span class="cell-label">3.</span><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="55"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="56"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="57"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="58"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="59"><input class="cell-input" maxlength="1"></div>
+        
+          <div class="cell" id="23"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="32"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="39"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="61"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+        
+          <div class="cell" id="24"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="33"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="40"><span class="cell-label">5.</span><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="50"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="51"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="52"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="53"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
 
-            <!-- Lanjutkan mengisi baris sesuai gambar -->
-            <!-- Baris 2 -->
-            <div class="cell"><input data-answer="R"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell"><input data-answer="T"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell"><input data-answer="T"></div>
-            <div class="cell black-cell"></div>
+          <div class="cell" id="25"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="63"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
 
-            <!-- Baris 3 -->
-            <div class="cell" data-answer="G"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell" data-answer="T"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell" data-answer="T"></div>
-            <div class="cell black-cell"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="64"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="65"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
 
-            <!-- Baris 4 -->
-            <div class="cell" data-answer="E"></div>
-            <div class="cell" data-answer="B"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="66"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
 
-            <!-- Baris 5 -->
-            <div class="cell" data-answer="N"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <div class="cell black-cell"></div>
-            <!-- Baris 6 -->
-            <div class="cell" data-answer="T"></div>
-<div class="cell" data-answer="D"></div>
-<div class="cell" data-answer="U"></div>
-<div class="cell" data-answer="B"></div>
-<div class="cell" data-answer="L"></div>
-<div class="cell" data-answer="I"></div>
-<div class="cell" data-answer="N"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell black"></div>
+          <div class="cell" id="68"><span class="cell-label">4.</span><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="69"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="67"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="70"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="71"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="72"><input class="cell-input" maxlength="1"></div>
+          <div class="cell" id="73"><input class="cell-input" maxlength="1"></div>
+          <div class="cell black"></div>
 
-<!-- Baris 7 -->
-<div class="cell" data-answer="I"></div>
-<div class="cell" data-answer="C"></div>
-<div class="cell" data-answer="R"></div>
-<div class="cell" data-answer="E"></div>
-<div class="cell" data-answer="E"></div>
-<div class="cell" data-answer="P"></div>
-<div class="cell" data-answer="E"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
+          
 
-<!-- Baris 8 -->
-<div class="cell" data-answer="N"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="T"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="I"></div>
-<div class="cell" data-answer="O"></div>
-
-<!-- Baris 9 -->
-<div class="cell" data-answer="A"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="S"></div>
-<div class="cell" data-answer="S"></div>
-
-<!-- Baris 10 -->
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="N"></div>
-<div class="cell" data-answer="U"></div>
-<div class="cell" data-answer="S"></div>
-<div class="cell" data-answer="A"></div>
-<div class="cell" data-answer="P"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="T"></div>
-
-<!-- Baris 11 -->
-<div class="cell" data-answer="T"></div>
-<div class="cell" data-answer="P"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="A"></div>
-<div class="cell" data-answer="G"></div>
-<div class="cell" data-answer="I"></div>
-<div class="cell" data-answer="N"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="S"></div>
-
-<!-- Baris 12 -->
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="B"></div>
-<div class="cell" data-answer="N"></div>
-<div class="cell black-cell"></div>
+        </div>
+        <button id="submit">Cek Jawaban</button>
+        <a href="index.html" ><button id="back">Return Home</button></a>
 
 
-<!-- Baris 13 -->
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="S"></div>
-<div class="cell" data-answer="W"></div>
-<div class="cell" data-answer="I"></div>
-<div class="cell" data-answer="F"></div>
-<div class="cell" data-answer="T"></div>
+      </div>
+      <div id="questions">
+        <h3>Pertanyaan</h3>
+        <h4>Mendatar:</h4>
+        <ul>
+          <li>1. Bulan Kemerdekaan Indonesia</li>
+          <li>2. Kota kapital negara Irlandia</li>
+          <li>3. Bentuk Zat yang ke-4</li>
+          <li>4. Virus Komputer Pertama</li>
+          <li>5. Bahasa pemrograman yang dipakai IOS?</li>
+        </ul>
+        <h4>Menurun:</h4>
+        <ul>
+          <li>1. Pemenang FIFA World Cup 2022</li>
+          <li>2. Negara Asal mulanya Es Krim</li>
+          <li>3. Unit Data Storage yang mempunyai 1,000,000,000,000,000 byte</li>
+          <li>4. Internal Codename untuk Android 13</li>
+          <li>5. Planet dengan 146 bulan</li>
+        </ul>
+      </div>
+    <div id="score"></div>
+  </div>
 
-<!-- Baris 14 -->
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="C"></div>
-<div class="cell" data-answer="R"></div>
-<div class="cell" data-answer="E"></div>
-<div class="cell" data-answer="A"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="I"></div>
-<div class="cell" data-answer="N"></div>
+  <script>
+    var answers = {
 
-<!-- Baris 15 -->
-<div class="cell" data-answer="L"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="B"></div>
-<div class="cell" data-answer="E"></div>
-<div class="cell" data-answer="T"></div>
-<div class="cell" data-answer="A"></div>
-<div class="cell" data-answer="C"></div>
-<div class="cell" data-answer="H"></div>
-<div class="cell black-cell"></div>
+      "10": "A",
+      "11": "G",
+      "12": "U",
+      "13": "S",
+      "14": "T",
+      "15": "U",
+      "16": "S",
 
-<!-- Baris 16 -->
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
-<div class="cell" data-answer="I"></div>
-<div class="cell" data-answer="N"></div>
-<div class="cell" data-answer="T"></div>
-<div class="cell" data-answer="E"></div>
-<div class="cell" data-answer="R"></div>
-<div class="cell black-cell"></div>
-<div class="cell black-cell"></div>
+      "18": "R",
+      "19": "G",
+      "20": "E",
+      "21": "N",
+      "22": "T",
+      "23": "I",
+      "24": "N",
+      "25": "A",
 
-</div>
-<div class="questions">
-    <h2>Pertanyaan:</h2>
-    <h3>Mendatar:</h3>
-    <ul>
-        <li id="q-horizontal-1">1. Bulan Kemerdekaan Indonesia (7 huruf)</li>
-        <li id="q-horizontal-2">2. Kota kapital negara Irlandia (6 huruf)</li>
-        <li id="q-horizontal-3">3. Bentuk Zat yang ke-4 (6 huruf)</li>
-        <li id="q-horizontal-4">4. Virus Komputer Pertama? (7 huruf)</li>
-        <li id="q-horizontal-5">5. Bahasa pemrograman yang dipakai IOS? (5 huruf)</li>
-    </ul>
-    <h3>Menurun:</h3>
-    <ul>
-        <li id="q-vertical-1">1. Negara Asal mulanya Es Krim (5 huruf)</li>
-        <li id="q-vertical-2">2. Pemenang FIFA World Cup 2022 (8 huruf)</li>
-        <li id="q-vertical-3">3. Planet dengan 146 bulan (7 huruf)</li>
-        <li id="q-vertical-4">4. Internal Codename untuk Android 13 (8 huruf)</li>
-        <li id="q-vertical-5">5. Unit Data Storage yang mempunyai 1,000,000,000,000,000 byte (8 huruf)</li>
-    </ul>
-</div>
+      "27": "I",
+      "28": "R",
+      "29": "A",
+      "30": "M",
+      "31": "I",
+      "32": "S",
+      "33": "U",
 
-    <div class="score-board">
-        <p>Skor: <span id="score">0</span></p>
-        <button onclick="checkAnswers()">Periksa Jawaban</button>
-    </div>
-</div>
-</div>
-<script src="js/scriptUTS.js"></script>
+      "34": "A",
+      "35": "T",
+      "36": "U",
+      "37": "R",
+      "38": "N",
+      "39": "U",
+      "40": "S",
+
+      "41": "D",
+      "42": "B",
+      "43": "L",
+      "44": "I",
+      "45": "N",
+
+      "46": "C",
+      "47": "H",
+      "48": "I",
+      "49": "N",
+
+      "50": "W",
+      "51": "I",
+      "52": "F",
+      "53": "T",
+
+      "54": "P",
+      "55": "L",
+      "56": "A",
+      "57": "S",
+      "58": "M",
+      "59": "A",
+
+      "61": "E",
+      "62": "T",
+      "63": "A",
+      "64": "B",
+      "65": "Y",
+      "66": "T",
+      "67": "E",
+
+
+      
+      "68": "C",
+      "69": "R",
+      "70": "E",
+      "71": "P",
+      "72": "E",
+      "73": "R",
+      
+    };
+
+    document.getElementById("submit").addEventListener("click", function () {
+      var isCorrect = true;
+      for (var id in answers) {
+        var input = document.getElementById(id)?.querySelector("input");
+        if (input && input.value.toUpperCase() !== answers[id]) {
+          input.style.color = "red";
+          isCorrect = false;
+        } else if (input) {
+          input.style.color = "green";
+        }
+      }
+
+      if (isCorrect) {
+        alert("Selamat! Anda berhasil.");
+      } else {
+        alert("Ada kesalahan, coba lagi.");
+      }
+    });
+  </script>
 </body>
 </html>
